@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Billing Page</title>
+	<style type="text/css">
+		nav{
+	flex: 1;
+	text-align: right;
+}
+nav ul{
+	display: inline-block;
+	list-style-type: none;
+}
+nav ul li{
+	display: inline-block;
+	margin: 20px;
+}
+nav{
+	flex: 1;
+	text-align: right;
+}
+.navbar{
+	display: flex;
+	align-items: center;
+	padding: 20px;
+}
+a{
+	text-decoration: none;
+	color: black;
+	font-size: 18px;
+}
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+h3{
+text-align: center;
+font-family: Bookman Old Style;
+color:  #ff6666
+;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #45a049;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type=submit]:hover {
+  background-color: #ff6666;
+}
+
+
+
+	</style>
+	<script>  
+
+function validateform(){ 
+
+var consnum=document.myform.consumernumber.value;  
+var fullname=document.myform.fullname.value;  
+var address=document.myform.address.value;
+var contactnumber=document.myform.contactnumber.value; 
+var cosumptionunit=document.myform.cosumptionunit.value; 
+var amount;
+  
+if (consnum==null || consnum==""){  
+  alert("Consumer Number is Required..");  
+  return false;  
+} 
+else if (fullname==null || fullname==""){  
+  alert("Full Name is Required..");  
+  return false;  
+} 
+else if (address==null || address==""){  
+  alert("Address is Required..");  
+  return false;  
+} 
+else if (contactnumber==null || contactnumber==""){  
+  alert("Contact Number is Required..");  
+  return false;  
+} 
+else if (cosumptionunit==null || cosumptionunit==""){  
+  alert("Consumption Unit is Required..");  
+  return false;  
+} 
+if (cosumptionunit<100) {
+amount = 500;
+}
+        else if(cosumptionunit>100 && cosumptionunit<=200)
+        {
+           amount=1000;        
+        }
+         else if(cosumptionunit>200 && cosumptionunit<=300)
+        {
+           amount=1500;   
+        }
+         else if(cosumptionunit>300 && cosumptionunit<=500)
+        {
+           amount=2000;       
+        }
+        else
+              {
+           amount=5000;  
+        }
+     var data = (fullname +" your Electricity Bill Amount = "+amount)
+	document.getElementById('loco').innerHTML=data;
+}  
+</script> 
+</head>
+<body style="background: #00F260;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #0575E6, #00F260);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left, #0575E6, #00F260); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+	<div class="navbar">
+        <nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="table.html">Cosumption Table</a></li>
+				<li><a href="contact.html">Contact us</a></li>
+				<li><a href="login.html">Sign out</a></li>
+			
+			</ul>
+		</nav>
+	</div>
+
+<div class="form" id="loco">
+  <form name="myform" action="/action_page.php" onsubmit="return validateform()">
+  	<h3>Energy Billing System</h3>
+
+    <label for="cnum">Consumer Number</label>
+    <input type="text" id="cnum" name="consumernumber" placeholder="Enter your Consumer Number..">
+
+    <label for="fname">Full Name</label>
+    <input type="text" id="fname" name="fullname" placeholder="Enter your Full Name..">
+
+    <label for="State">State</label>
+    <select id="State" name="State">
+      <option value="maharashtra">Maharashtra</option>
+      <option value="andhra pradesh">Andhra Pradesh</option>
+      <option value="bihar">Bihar</option>
+      <option value="goa">Goa</option>
+      <option value="madhya pradesh	">Madhya Pradesh	</option>
+      <option value="odisha">Odisha</option>
+      <option value="chattisgarh">Chattisgarh</option>
+    </select>
+    <label for="add">Address</label>
+    <input type="text" id="add" name="address" placeholder="Enter your Address..">   
+    <label for="con">Contact Number</label>
+    <input type="text" id="con" name="contactnumber" placeholder="Enter your Contact Number..">
+    <label for="unit">Consumption Unit</label>
+    <input type="text" id="unit" name="cosumptionunit" placeholder="Enter your Unit as Per Bill">
+
+<input type="submit" value="Submit">
+  
+  
+    
+  </form>
+</div>
+
+
+</body>
+</html>
